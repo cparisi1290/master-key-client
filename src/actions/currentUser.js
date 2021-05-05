@@ -1,4 +1,4 @@
-// SYNC
+// SYNC ACTION CREATORS 
 export const setCurrentUser = (user) => {
     return {
         type:"SET_CURRENT_USER",
@@ -12,7 +12,9 @@ export const clearCurrentUser = () => {
     }
 }
 
-// ASYNC - must send request to backend to login
+// ASYNC ACTION CREATORS 
+
+// must send request to backend to login
 export const login = credentials => {
     return (dispatch) => {
         return fetch("http://localhost:3001/api/v1/login", {
@@ -37,6 +39,7 @@ export const login = credentials => {
 
 // clear session
 export const logout = () => {
+    // optimistic logout
     return (dispatch) => {
         dispatch(clearCurrentUser())
         return fetch("http://localhost:3001/api/v1/logout", {
