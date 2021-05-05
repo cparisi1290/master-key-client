@@ -6,17 +6,22 @@ export const setCurrentUser = (user) => {
     }
 }
 
+export const clearCurrentUser = () => {
+    return {
+        type: "CLEAR_CURRENT_USER"
+    }
+}
 
 // ASYNC - must send request to backend to login
 export const login = credentials => {
-    console.log("credentials are", credentials)
-    return dispatch => {
+    return (dispatch) => {
         return fetch("http://localhost:3001/api/v1/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(credentials)
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(credentials)
         })
         .then(resp => resp.json())
         .then(user => {
@@ -30,13 +35,25 @@ export const login = credentials => {
     }
 }
 
+// clear session
+export const logout = () => {
+    return (dispatch) => {
+        dispatch(clearCurrentUser())
+        return fetch("http://localhost:3001/api/v1/logout", {
+            credentials: "include",
+            method: "DELETE"
+        })
+    }
+}
+
 export const getCurrentUser = () => {
-    return dispatch => {
+    return (dispatch) => {
         return fetch("http://localhost:3001/api/v1/get_current_user", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
         })
         .then(resp => resp.json())
         .then(user => {
