@@ -9,10 +9,12 @@ const NavBar = ({currentUser}) => {
     return (
         <div className="NavBar">
             {currentUser ? <h2>Welcome Back, {currentUser.attributes.name}!</h2> : ""}
-            {currentUser ? <Logout/> : <Login/>}
+            <button>Login</button> 
+            <button>Signup</button>
         </div>
     )
 }
+// {currentUser ? <Logout/> : <Login/>}
 
 // incoming arg is an obj, state, coming from redux,  which has a property called currentUser
 // state = { ...,
