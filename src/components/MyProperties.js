@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropertyCard from './PropertyCard'
 
 const MyProperties = (props) => {
-    const propertyCards = props.myProperties.map(p => <PropertyCard property={p} key={p.id}/>)
+    const propertyCards = props.myProperties.length >0 ? props.myProperties.map(p => <PropertyCard property={p} key={p.id}/>) : []
     return (
         propertyCards
     )
