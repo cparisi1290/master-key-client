@@ -20,4 +20,4 @@ const mapStateToProps = ({ myProperties }) => {
     }
 }
 
-export default MyProperties(mapStateToProps)
+export default connect(mapStateToProps)(MyProperties)
