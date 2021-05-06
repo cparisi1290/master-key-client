@@ -1,4 +1,5 @@
 import { resetLoginForm} from './loginForm'
+import { resetSignupForm} from './signupForm'
 import { getMyProperties } from './myProperties'
 
 // SYNC ACTION CREATORS 
@@ -15,7 +16,34 @@ export const clearCurrentUser = () => {
     }
 }
 
-// ASYNC ACTION CREATORS 
+// ASYNC ACTION CREATORS
+
+export const signup = credentials => {
+    return (dispatch) => {
+        const userInfo = {
+            user: credentials
+        }
+        return fetch("http://localhost:3001/api/v1/signup", {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                dispatch(setCurrentUser(resp.data)) // < same as {type: "SET_CURRENT_USER", user:user}
+                dispatch(getMyProperties()) //
+                dispatch(resetSignupForm())
+            }
+        })
+        .catch(console.log)
+    }
+}
 
 // must send request to backend to login
 export const login = credentials => {
