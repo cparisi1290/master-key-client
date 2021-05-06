@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Login from './Login'
-import Logout from './Logout';
+// import Login from './Login'
+// import Logout from './Logout';
 
 // functional component
 const NavBar = ({currentUser}) => {
