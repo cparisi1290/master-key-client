@@ -1,9 +1,10 @@
 import React from 'react';
+import MyProperties from './MyProperties'
 
 const MainContainer = () => {
     return (
         <div className="MainContainer">
-            Main Container
+            <MyProperties/>
         </div>
     )
 }
