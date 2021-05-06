@@ -1,4 +1,5 @@
 import { resetLoginForm} from './loginForm'
+import { getMyProperties } from './myProperties'
 
 // SYNC ACTION CREATORS 
 export const setCurrentUser = (user) => {
@@ -33,6 +34,7 @@ export const login = credentials => {
                 alert(resp.error)
             } else {
                 dispatch(setCurrentUser(resp.data)) // < same as {type: "SET_CURRENT_USER", user:user}
+                dispatch(getMyProperties()) //
                 dispatch(resetLoginForm())
             }
         })
