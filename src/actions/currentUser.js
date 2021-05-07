@@ -18,7 +18,7 @@ export const clearCurrentUser = () => {
 
 // ASYNC ACTION CREATORS
 
-export const signup = credentials => {
+export const signup = (credentials, history) => {
     return (dispatch) => {
         const userInfo = {
             user: credentials
@@ -39,6 +39,7 @@ export const signup = credentials => {
                 dispatch(setCurrentUser(resp.data)) // < same as {type: "SET_CURRENT_USER", user:user}
                 dispatch(getMyProperties()) //
                 dispatch(resetSignupForm())
+                history.push('/')
             }
         })
         .catch(console.log)
@@ -46,7 +47,7 @@ export const signup = credentials => {
 }
 
 // must send request to backend to login
-export const login = credentials => {
+export const login = (credentials, history) => {
     return (dispatch) => {
         return fetch("http://localhost:3001/api/v1/login", {
             credentials: "include",
@@ -64,6 +65,7 @@ export const login = credentials => {
                 dispatch(setCurrentUser(resp.data)) // < same as {type: "SET_CURRENT_USER", user:user}
                 dispatch(getMyProperties()) //
                 dispatch(resetLoginForm())
+                history.push('/')
             }
         })
         .catch(console.log)
