@@ -6,6 +6,12 @@ export const setMyProperties = (properties) => {
     }
 }
 
+export const clearProperties = () => {
+    return {
+        type: "CLEAR_PROPERTIES"
+    }
+}
+
 // ASYNC ACTION CREATORS
 
 export const getMyProperties = () => {
