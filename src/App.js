@@ -1,16 +1,16 @@
 import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { getCurrentUser } from './actions/currentUser';
-// import NavBar from './components/NavBar';
+import NavBar from './components/NavBar';
 // import MainContainer from './components/MainContainer';
 import Home from './components/Home';
 import Login from './components/Login';
-import Logout from './components/Logout';
+// import Logout from './components/Logout';
 import Signup from './components/Signup';
 import MyProperties from './components/MyProperties';
-import { Route, Switch, withRouter } from 'react-router-dom';
-
+import NewPropertyForm from './components/NewPropertyForm';
 
 class App extends React.Component {
 
@@ -22,16 +22,17 @@ class App extends React.Component {
     const { loggedIn } = this.props
     return (
       <div className="App">
-        { loggedIn ? <Logout /> : null}
+        {loggedIn ? <NavBar location={this.props.location}/> : <Home/>}
         <Switch>
-        <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
+          <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/' render={(props) => loggedIn ? <MyProperties {...props}/> : <Home {...props}/>}/>
           <Route exact path='/properties' component={MyProperties}/>
-          <Route exact path='/properties/new' component={NewProperty}/>
+          <Route exact path='/properties/new' component={NewPropertyForm}/>
         </Switch>
       </div>
     // <Footer/>
+    // { loggedIn ? <Logout /> : null}
 
     );
   }
