@@ -16,6 +16,12 @@ export const clearCurrentUser = () => {
     }
 }
 
+export const clearProperties = () => {
+    return {
+        type: "CLEAR_PROPERTIES"
+    }
+}
+
 // ASYNC ACTION CREATORS
 
 export const signup = (credentials, history) => {
@@ -73,10 +79,11 @@ export const login = (credentials, history) => {
 }
 
 // clear session
-export const logout = () => {
+export const logout = (event) => {
     // optimistic logout
     return (dispatch) => {
         dispatch(clearCurrentUser())
+        dispatch(clearProperties())
         return fetch("http://localhost:3001/api/v1/logout", {
             credentials: "include",
             method: "DELETE"
