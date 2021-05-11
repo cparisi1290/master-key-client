@@ -11,6 +11,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import MyProperties from './components/MyProperties';
 import NewPropertyForm from './components/NewPropertyForm';
+import PropertyCard from './components/PropertyCard';
 
 class App extends React.Component {
 
@@ -19,7 +20,7 @@ class App extends React.Component {
   }
   
   render() {
-    const { loggedIn } = this.props
+    const { loggedIn, properties } = this.props
     return (
       <div className="App">
         {loggedIn ? <NavBar location={this.props.location}/> : <Home/>}
@@ -29,6 +30,14 @@ class App extends React.Component {
           <Route exact path='/' render={(props) => loggedIn ? <MyProperties {...props}/> : <Home {...props}/>}/>
           <Route exact path='/properties' component={MyProperties}/>
           <Route exact path='/properties/new' component={NewPropertyForm}/>
+          <Route exact path='/properties/:id' render={props => {
+          // must pass prop to property card
+              // find property obj from params in match in props
+              const property = properties.find(property => property.id === props.match.params.id)
+              console.log(property)
+              return <PropertyCard property={property} {...props}/>
+            }
+          }/>
         </Switch>
       </div>
     // <Footer/>
@@ -38,9 +47,10 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps =state => {
+const mapStateToProps = state => {
   return ({
-    loggedIn: !!state.currentUser
+    loggedIn: !!state.currentUser,
+    properties: state.myProperties
   })
 }
 
