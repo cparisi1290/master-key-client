@@ -13,18 +13,13 @@ const initialState = {
 }
 
 const newPropertyForm = (state=initialState, action) => {
-    console.log("incoming action is", action)
     switch (action.type) {
         case "UPDATE_NEW_PROPERTY_FORM":
             const returnValue = {
                     ...state,
                     [action.formData.name]: action.formData.value
             }
-            console.log("return value in reducer is", returnValue)
-            return {
-                ...state,
-                [action.formData.name]: action.formData.value
-            }
+            return returnValue
         case "RESET_NEW_PROPERTY_FORM":
             return initialState
         default:
