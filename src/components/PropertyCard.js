@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link    } from 'react-router-dom'
 
 const PropertyCard = ({ property }) => {
     return (
@@ -14,7 +14,7 @@ const PropertyCard = ({ property }) => {
                 <p>{property.attributes.occupied}</p>
                 <p>{property.attributes.pets_allowed}</p>
                 <p>Rent: ${property.attributes.rent_amount}</p>
-
+                <Link to={`/properties/${property.id}/edit`}>Edit Property</Link>
             </div> : 
             <p>This is the property card.</p>
     )
