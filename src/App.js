@@ -34,8 +34,13 @@ class App extends React.Component {
           // must pass prop to property card
               // find property obj from params in match in props
               const property = properties.find(property => property.id === props.match.params.id)
-              console.log(property)
               return <PropertyCard property={property} {...props}/>
+            }
+          }/>
+          <Route exact path='/properties/:id/edit' render={props => {
+              const property = properties.find(property => property.id === props.match.params.id)
+              // render method needs to be pure 
+              return <NewPropertyForm property={property} {...props}/>
             }
           }/>
         </Switch>
@@ -48,6 +53,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return ({
     loggedIn: !!state.currentUser,
     properties: state.myProperties
