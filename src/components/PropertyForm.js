@@ -16,7 +16,7 @@ const PropertyForm = ({updatePropertyForm, formData, userId, property, handleSub
     return (
         <form onSubmit={event => {
             event.preventDefault()
-            handleSubmit(formData, userId)
+            handleSubmit(formData)
             }}>
             <input type="text" placeholder="name" name="name" onChange={handleChange} value={name}/><br/>
             <input type="text" placeholder="address" name="address" onChange={handleChange} value={address}/><br/>

@@ -5,7 +5,7 @@ import PropertyForm from './PropertyForm';
 
 const NewPropertyFormWrapper = ({history, createProperty}) => {
 
-    const handleSubmit = (event, formData, userId, history) => {
+    const handleSubmit = (formData, userId) => {
         createProperty({
             ...formData,
             userId,
