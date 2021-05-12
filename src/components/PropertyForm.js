@@ -1,29 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux'
-// 1. grab updateNewPropertyForm from action creator
-import { updateNewPropertyForm } from '../actions/newPropertyForm'
-import { createProperty } from '../actions/myProperties'
+// 1. grab updatePropertyForm from action creator
+import { updatePropertyForm } from '../actions/propertyForm'
 
-// 3. redux gives back a prop called updateNewPropertyForm which when invoked, redux will now dispatch
-const NewPropertyForm = ({updateNewPropertyForm, formData, history, createProperty, userId}) => {
+// 3. redux gives back a prop called updatePropertyForm which when invoked, redux will now dispatch
+const PropertyForm = ({updatePropertyForm, formData, userId, property, handleSubmit, editMode}) => {
     const {name, address, city, state, zip, bedrooms, bathrooms, image, occupied, pets_allowed, rent_amount} = formData
 
-    const handleChange = (event) => {
+    const handleChange = event => {
         const {name, value} = event.target
         // 4. not just an invocation of action creator but the action built by the actions creator with the appropiate arguments
-        updateNewPropertyForm(name, value)
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        createProperty({
-            ...formData,
-            userId,
-        }, history)            
+        updatePropertyForm(name, value)
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={event => {
+            event.preventDefault()
+            handleSubmit(formData)
+            }}>
             <input type="text" placeholder="name" name="name" onChange={handleChange} value={name}/><br/>
             <input type="text" placeholder="address" name="address" onChange={handleChange} value={address}/><br/>
             <input type="text" placeholder="city" name="city" onChange={handleChange} value={city}/><br/>
@@ -35,22 +29,22 @@ const NewPropertyForm = ({updateNewPropertyForm, formData, history, createProper
             <label>Pets Allowed?<input type="checkbox" name="pets_allowed?" onChange={handleChange} value={pets_allowed}/></label><br></br>
             <input type="text" placeholder="rent amount" name="rent_amount" onChange={handleChange} value={rent_amount}/><br/>
             <input type="text" placeholder="image" name="image" onChange={handleChange} value={image}/><br/>
-            <input type="submit" value="Add Property"/>
+            <input type="submit" value={editMode ? "Update Property" : "Add Property"}/>
         </form>
 
     )
 }
 
 // a callback
-const mapStateToProps = reduxState => {
-    const userId = reduxState.currentUser ? reduxState.currentUser.id : ""
+const mapStateToProps = state => {
+    const userId = state.currentUser ? state.currentUser.id : ""
     return {
         // comes from reducer and made avaiable as props in component
-        formData: reduxState.newPropertyForm,
+        formData: state.propertyForm,
         userId
     }
 }
 
-// take updateNewPropertyForm from actin creator, give it back as a prop, and when called, dispatch action it returns
+// take updatePropertyForm from actin creator, give it back as a prop, and when called, dispatch action it returns
 // 2. pass action creator to redux's connect fn as mapDispatchToProps
-export default connect(mapStateToProps, {updateNewPropertyForm, createProperty})(NewPropertyForm)
+export default connect(mapStateToProps, {updatePropertyForm})(PropertyForm)
