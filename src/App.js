@@ -3,15 +3,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { getCurrentUser } from './actions/currentUser';
+import { setFormDataForEdit } from './actions/propertyForm';
 import NavBar from './components/NavBar';
-// import MainContainer from './components/MainContainer';
 import Home from './components/Home';
 import Login from './components/Login';
 // import Logout from './components/Logout';
 import Signup from './components/Signup';
 import MyProperties from './components/MyProperties';
-import NewPropertyForm from './components/NewPropertyForm';
+// import PropertyForm from './components/PropertyForm';
 import PropertyCard from './components/PropertyCard';
+import NewPropertyFormWrapper from './components/NewPropertyFormWrapper';
+import EditPropertyFormWrapper from './components/EditPropertyFormWrapper';
 
 class App extends React.Component {
 
@@ -20,7 +22,7 @@ class App extends React.Component {
   }
   
   render() {
-    const { loggedIn, properties } = this.props
+    const { loggedIn, properties, setFormDataForEdit } = this.props
     return (
       <div className="App">
         {loggedIn ? <NavBar location={this.props.location}/> : <Home/>}
@@ -29,7 +31,7 @@ class App extends React.Component {
           <Route exact path='/login' component={Login}/>
           <Route exact path='/' render={(props) => loggedIn ? <MyProperties {...props}/> : <Home {...props}/>}/>
           <Route exact path='/properties' component={MyProperties}/>
-          <Route exact path='/properties/new' component={NewPropertyForm}/>
+          <Route exact path='/properties/new' component={NewPropertyFormWrapper}/>
           <Route exact path='/properties/:id' render={props => {
           // must pass prop to property card
               // find property obj from params in match in props
@@ -40,7 +42,7 @@ class App extends React.Component {
           <Route exact path='/properties/:id/edit' render={props => {
               const property = properties.find(property => property.id === props.match.params.id)
               // render method needs to be pure 
-              return <NewPropertyForm property={property} {...props}/>
+              return <EditPropertyFormWrapper property={property} {...props}/>
             }
           }/>
         </Switch>
@@ -53,11 +55,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return ({
     loggedIn: !!state.currentUser,
     properties: state.myProperties
   })
 }
 
-export default withRouter(connect(mapStateToProps, {getCurrentUser})(App));
+export default withRouter(connect(mapStateToProps, {getCurrentUser, setFormDataForEdit})(App));
