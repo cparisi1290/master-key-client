@@ -1,0 +1,27 @@
+# Query: propertyForm
+# Flags: CaseSensitive
+# ContextLines: 1
+
+6 results - 3 files
+
+master-key-client/src/store.js:
+   7  import myProperties from './reducers/myProperties'
+   8: import propertyForm from './reducers/propertyForm'
+   9  
+
+  15      signupForm,
+  16:     propertyForm
+  17  })
+
+master-key-client/src/actions/myProperties.js:
+  1: import {resetPropertyForm} from './propertyForm'
+  2  
+
+master-key-client/src/components/PropertyForm.js:
+   3  // 1. grab updatePropertyForm from action creator
+   4: import { updatePropertyForm } from '../actions/propertyForm'
+   5  import { createProperty } from '../actions/myProperties'
+
+  48          // comes from reducer and made avaiable as props in component
+  49:         formData: reduxState.propertyForm,
+  50          userId
