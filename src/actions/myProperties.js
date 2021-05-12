@@ -109,7 +109,6 @@ export const updateProperty = (propertyData, history) => {
                 occupied: propertyData.occupied,
                 pets_allowed: propertyData.petsAllowed,
                 rent_amount: propertyData.rentAmount,
-                user_id: propertyData.userId
             }
         }
         return fetch(`http://localhost:3001/api/v1/properties/${propertyData.propertyId}`, {
@@ -127,8 +126,9 @@ export const updateProperty = (propertyData, history) => {
             } else {
                 // add property to store
                 dispatch(updatePropertySuccess(resp.data))
-                // clear form
-                dispatch(resetPropertyForm())
+                // // clear form
+                // // will reset through componentDidMount
+                // dispatch(resetPropertyForm())
                 // go to property show page
                 history.push(`/properties/${resp.data.id}`)
             }
