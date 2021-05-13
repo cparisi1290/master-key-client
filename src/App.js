@@ -3,14 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { getCurrentUser } from './actions/currentUser';
-import { setFormDataForEdit } from './actions/propertyForm';
+
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Login from './components/Login';
-// import Logout from './components/Logout';
 import Signup from './components/Signup';
 import MyProperties from './components/MyProperties';
-// import PropertyForm from './components/PropertyForm';
 import PropertyCard from './components/PropertyCard';
 import NewPropertyFormWrapper from './components/NewPropertyFormWrapper';
 import EditPropertyFormWrapper from './components/EditPropertyFormWrapper';
@@ -22,7 +20,7 @@ class App extends React.Component {
   }
   
   render() {
-    const { loggedIn, properties, setFormDataForEdit } = this.props
+    const { loggedIn, properties } = this.props
     return (
       <div className="App">
         {loggedIn ? <NavBar location={this.props.location}/> : <Home/>}
@@ -61,4 +59,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default withRouter(connect(mapStateToProps, {getCurrentUser, setFormDataForEdit})(App));
+export default withRouter(connect(mapStateToProps, {getCurrentUser})(App));
