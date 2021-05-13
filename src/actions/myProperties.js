@@ -27,6 +27,12 @@ export const updatePropertySuccess = property => {
       property
     }
   }
+export const deletePropertySuccess = propertyId => {
+    return {
+      type: "DELETE_PROPERTY",
+      propertyId
+    }
+  }
 
 // ASYNC ACTION CREATORS
 
@@ -131,6 +137,33 @@ export const updateProperty = (propertyData, history) => {
                 // dispatch(resetPropertyForm())
                 // go to property show page
                 history.push(`/properties/${resp.data.id}`)
+            }
+        })
+        .catch(console.log)
+    }
+}
+
+export const deleteProperty = (propertyId, history) => {
+    return dispatch => {
+        return fetch(`http://localhost:3001/api/v1/properties/${propertyId}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(resp => resp.json())
+        .then(resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+                // add property to store
+                dispatch(deletePropertySuccess(propertyId))
+                // // clear form
+                // // will reset through componentDidMount
+                // dispatch(resetPropertyForm())
+                // go to property show page
+                history.push("/properties")
             }
         })
         .catch(console.log)
