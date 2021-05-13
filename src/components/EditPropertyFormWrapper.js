@@ -1,6 +1,6 @@
 import React from 'react';
 import { setFormDataForEdit, resetPropertyForm } from '../actions/propertyForm'
-import { updateProperty } from '../actions/myProperties'
+import { updateProperty, deleteProperty } from '../actions/myProperties'
 import { connect } from 'react-redux'
 import PropertyForm from './PropertyForm';
 
@@ -30,10 +30,15 @@ class EditPropertyFormWrapper extends React.Component {
     }
 // wrapper has access to history
    render () {
-        const {history, handleSubmit} = this.props
-       return <PropertyForm editMode handleSubmit={this.handleSubmit}/>
+        const {history, deleteProperty, property} = this.props
+        const propertyId = property ? property.id : null
+       return <> 
+            <PropertyForm editMode handleSubmit={this.handleSubmit}/><br/>
+            {/* grab property avail as a prop */}
+            <button style={{color: "red"}} onClick={() => deleteProperty(propertyId, history)}>Delete Property</button>   
+        </>
        
    } 
 }
-
-export default connect(null, {updateProperty, setFormDataForEdit, resetPropertyForm})(EditPropertyFormWrapper);
+ 
+export default connect(null, {updateProperty, setFormDataForEdit, resetPropertyForm, deleteProperty})(EditPropertyFormWrapper);
