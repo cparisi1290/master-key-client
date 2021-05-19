@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { getCurrentUser } from './actions/currentUser';
-
+import Welcome from './components/WelcomeMessage';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -23,11 +23,11 @@ class App extends React.Component {
     const { loggedIn, properties } = this.props
     return (
       <div className="App">
-        {loggedIn ? <NavBar location={this.props.location}/> : <Home/>}
+        {loggedIn ? <><Welcome/><NavBar location={this.props.location}/></> : <Home />}
         <Switch>
           <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
           <Route exact path='/login' component={Login}/>
-          <Route exact path='/' render={(props) => loggedIn ? <MyProperties {...props}/> : <Home {...props}/>}/>
+          <Route exact path='/' render={(props) => loggedIn ? <MyProperties {...props}/> : null }/>
           <Route exact path='/properties' component={MyProperties}/>
           <Route exact path='/properties/new' component={NewPropertyFormWrapper}/>
           <Route exact path='/properties/:id' render={props => {
