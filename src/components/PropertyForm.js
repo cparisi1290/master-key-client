@@ -23,10 +23,8 @@ const PropertyForm = ({updatePropertyForm, formData, userId, property, handleSub
             <input type="text" placeholder="city" name="city" onChange={handleChange} value={city}/><br/>
             <input type="text" placeholder="state" name="state" onChange={handleChange} value={state}/><br/>
             <input type="text" placeholder="zip" name="zip" onChange={handleChange} value={zip}/><br/>
-            <input type="text" placeholder="bedrooms" name="bedrooms" onChange={handleChange} value={bedrooms}/>
+            <input type="text" placeholder="bedrooms" name="bedrooms" onChange={handleChange} value={bedrooms}/><br/>
             <input type="text" placeholder="bathrooms" name="bathrooms" onChange={handleChange} value={bathrooms}/><br/>
-            <label>Occupied?<input type="checkbox" name="occupied?" onChange={handleChange} value={occupied}/></label><br/>
-            <label>Pets Allowed?<input type="checkbox" name="pets_allowed?" onChange={handleChange} value={pets_allowed}/></label><br></br>
             <input type="text" placeholder="rent amount" name="rent_amount" onChange={handleChange} value={rent_amount}/><br/>
             <input type="text" placeholder="image" name="image" onChange={handleChange} value={image}/><br/>
             <input type="submit" value={editMode ? "Update Property" : "Add Property"}/>
