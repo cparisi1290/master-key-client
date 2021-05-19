@@ -4,7 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 const MyProperties = (props) => {
-    const propertyCards = props.myProperties.length > 0 ? props.myProperties.map(p => (<p key={p.id}><Link to={`/properties/${p.id}`}>{p.attributes.name}</Link></p>)) : <p>This is propteries with an empty array of properties</p>
+    const propertyCards = props.myProperties.length > 0 ? props.myProperties.map(p => (
+        <div key={p.id} class="gallery">
+            <a href={p.attributes.image}></a>
+                <img src={p.attributes.image} alt={p.attributes.name} width="600" height="400"/>
+            <p><Link to={`/properties/${p.id}`}>{p.attributes.name}</Link></p>
+        </div>
+        )) : null  
     return propertyCards
 }
 
