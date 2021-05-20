@@ -27,7 +27,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
           <Route exact path='/login' component={Login}/>
-          <Route exact path='/' render={(props) => loggedIn ? <MyProperties {...props}/> : null }/>
+          <Route exact path='/' component={MyProperties}/>
+          {/* <Route exact path='/' render={(props) => loggedIn ? <MyProperties {...props}/> : null }/> */}
           <Route exact path='/properties' component={MyProperties}/>
           <Route exact path='/properties/new' component={NewPropertyFormWrapper}/>
           <Route exact path='/properties/:id' render={props => {
