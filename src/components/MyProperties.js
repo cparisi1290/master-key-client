@@ -8,7 +8,7 @@ const MyProperties = (props) => {
         <div key={p.id} class="gallery">
             <a href={p.attributes.image}></a>
                 <img src={p.attributes.image} alt={p.attributes.name} width="600" height="400"/>
-            <p><Link to={`/properties/${p.id}`}>{p.attributes.name}</Link></p>
+            <h5><Link to={`/properties/${p.id}`} className='link'>{p.attributes.name}</Link></h5>
         </div>
         )) : null  
     return propertyCards

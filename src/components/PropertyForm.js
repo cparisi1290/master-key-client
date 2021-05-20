@@ -5,7 +5,7 @@ import { updatePropertyForm } from '../actions/propertyForm'
 
 // 3. redux gives back a prop called updatePropertyForm which when invoked, redux will now dispatch
 const PropertyForm = ({updatePropertyForm, formData, userId, property, handleSubmit, editMode}) => {
-    const {name, address, city, state, zip, bedrooms, bathrooms, image, rent_amount} = formData
+    const {name, address, city, state, zip, bedrooms, bathrooms, image, rentAmount} = formData
 
     const handleChange = event => {
         const {name, value} = event.target
@@ -25,7 +25,7 @@ const PropertyForm = ({updatePropertyForm, formData, userId, property, handleSub
             <input type="text" placeholder="zip" name="zip" onChange={handleChange} value={zip}/><br/>
             <input type="text" placeholder="bedrooms" name="bedrooms" onChange={handleChange} value={bedrooms}/><br/>
             <input type="text" placeholder="bathrooms" name="bathrooms" onChange={handleChange} value={bathrooms}/><br/>
-            <input type="text" placeholder="rent amount" name="rent_amount" onChange={handleChange} value={rent_amount}/><br/>
+            <input type="text" placeholder="rent amount" name="rentAmount" onChange={handleChange} value={rentAmount}/><br/>
             <input type="text" placeholder="image" name="image" onChange={handleChange} value={image}/><br/>
             <input type="submit" value={editMode ? "Update Property" : "Add Property"}/>
         </form>

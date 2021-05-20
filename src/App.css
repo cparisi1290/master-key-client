@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  background-color: rgb(rgb(241, 230, 162));
+  background-size: cover;
+  height: 100%;
+  background-image: url("https://images.pexels.com/photos/266834/pexels-photo-266834.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  position: fixed;
+  min-width: 100%;
+  background-position: center;
+  overflow-y: scroll;
 }
 
 .NavBar {
@@ -8,9 +16,10 @@
   justify-content: space-between;
 }
 
-a.active {
-  color: blueviolet;
+.active {
+  color: gold;
 }
+
 
 div.gallery {
   margin: 5px;
@@ -33,6 +42,14 @@ div.desc {
   text-align: center;
 }
 
-/* .home {
-  background-image: url("./public/door.jpg");
-} */
+.accordion {
+  padding-bottom: 0.3em;
+
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  padding-bottom: 0.3em
+}
