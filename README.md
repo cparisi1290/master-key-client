@@ -1,3 +1,103 @@
+# Welcome to Master Key!
+
+    A property management app that allows a user to signup, login and logout. A User can create edit and delete a property.
+
+    Work in process, add: 
+        - repair requests
+        - tenant information
+        - important documentation
+        - payment schedule
+
+## Installation Backend
+
+Must be linked up with [Master Key Backend](https://github.com/cparisi1290/master-key-backend) to upload and save data. 
+        
+    Clone backend repo - linked above
+
+    Change directories into top level of app
+
+    Run bundle install
+
+    Run rails s
+
+    Open your browser to localhost:3001
+
+## Installation Frontend
+
+    Clone the this repo
+
+    Change directories into top level of app
+
+    In terminal, write: npm install 
+    
+    Still in terminal, write: npm start 
+    
+    Open browser to localhost:3000
+
+## Database Creation in Backend
+
+    rails db:create
+    rails db:migrate
+
+## Database Server Run
+
+    enable_extension "plpgsql"
+    
+    To start up the postgre sql server, input code into terminal:
+    
+    1) sudo apt-get update
+
+    2) sudo apt-get install postgresql postgresql-contrib
+    
+    3) ls /etc/postgresql/13/main/
+
+    4) service postgresql status - to check the staus of the server
+    
+    If it's a down status:
+    5) sudo /etc/init.d/postgresql start - then check status to make sure it's up and running
+
+## Ruby version
+    ruby 2.6.1p33
+
+## System dependencies
+    "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "bootstrap": "^4.6.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.0",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "web-vitals": "^1.0.1"
+
+## Contributing
+
+ This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct. Bug reports and pull requests are found on GitHub [here](https://github.com/cparisi1290/master-key-client).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
