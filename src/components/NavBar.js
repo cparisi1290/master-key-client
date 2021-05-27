@@ -2,14 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Logout from './Logout';
+import { Button } from 'react-bootstrap'
 
 // functional component
 const NavBar = ({currentUser, loggedIn}) => {
 
     return (
         <div className="NavBar">
-            <h4><NavLink exact activeClassName="active" to="/properties">Properties  </NavLink></h4>
-            <h4><NavLink exact activeClassName="active" to="/properties/new">Add Property</NavLink></h4>
+            <h4><NavLink exact activeClassName="active" to="/properties"><Button>Properties</Button></NavLink></h4>
+            <h4><NavLink exact activeClassName="active" to="/properties/new"><Button>Add Property</Button></NavLink></h4>
             { loggedIn ? <Logout/> : null}
 
         </div>

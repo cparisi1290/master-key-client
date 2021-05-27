@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { logout } from '../actions/currentUser'
 import { withRouter } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 // destructor
 const Logout = ({logout, history}) => {
