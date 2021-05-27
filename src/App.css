@@ -1,4 +1,4 @@
-.App {
+  .App {
   text-align: center;
   background-color: rgb(rgb(241, 230, 162));
   background-size: cover;
@@ -23,13 +23,13 @@
 
 div.gallery {
   margin: 5px;
-  border: 1px solid #ccc;
+  border: 5px solid black;
   float: left;
   width: 180px;
 }
 
 div.gallery:hover {
-  border: 1px solid #777;
+  border: 3px solid gold;
 }
 
 div.gallery img {
