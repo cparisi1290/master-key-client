@@ -8,7 +8,7 @@ import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import MyProperties from './components/MyProperties';
+import MainContainer from './components/MainContainer';
 import PropertyCard from './components/PropertyCard';
 import NewPropertyFormWrapper from './components/NewPropertyFormWrapper';
 import EditPropertyFormWrapper from './components/EditPropertyFormWrapper';
@@ -27,8 +27,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
           <Route exact path='/login' component={Login}/>
-          <Route exact path='/' component={MyProperties}/>
-          <Route exact path='/properties' component={MyProperties}/>
+          <Route exact path='/' component={MainContainer}/>
+          <Route exact path='/properties' component={MainContainer}/>
           <Route exact path='/properties/new' component={NewPropertyFormWrapper}/>
           <Route exact path='/properties/:id' render={props => {
           // must pass prop to property card

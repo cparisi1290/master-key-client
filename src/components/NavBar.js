@@ -9,10 +9,10 @@ const NavBar = ({currentUser, loggedIn}) => {
 
     return (
         <div className="NavBar">
-            <h4><NavLink exact activeClassName="active" to="/properties"><Button>Properties</Button></NavLink></h4>
-            <h4><NavLink exact activeClassName="active" to="/properties/new"><Button>Add Property</Button></NavLink></h4>
+            <h4><NavLink exact activeClassName="active" to="/properties"><Button variant="dark">Properties</Button></NavLink></h4>
+            <h4><NavLink exact activeClassName="active" to="/properties/new"><Button variant="dark">Add Property</Button></NavLink></h4>
             { loggedIn ? <Logout/> : null}
-
+            
         </div>
     )
 }

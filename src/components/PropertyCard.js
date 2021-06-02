@@ -16,7 +16,7 @@ const PropertyCard = ({ property }) => {
                     <Accordion defaultActiveKey="0">
                     <Card>
                         <Card.Header>
-                        <Accordion.Toggle as={Button} variant="link" eventKey={property}>
+                        <Accordion.Toggle as={Button } variant="dark" eventKey={property}>
                             View Details
                         </Accordion.Toggle>
                         </Card.Header>
@@ -26,7 +26,7 @@ const PropertyCard = ({ property }) => {
                             {property.attributes.city}, {property.attributes.state}, {property.attributes.zip}<br/>
                             Bedrooms: {property.attributes.bedrooms}<br/>
                             Bathrooms: {property.attributes.bathrooms}<br/>
-                            <Link to={`/properties/${property.id}/edit`} >Edit Property</Link>
+                            <Link to={`/properties/${property.id}/edit`}><Button variant="warning">Edit Property</Button></Link>
                         </Card.Body>
                         </Accordion.Collapse>
                     </Card>

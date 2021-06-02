@@ -7,6 +7,7 @@ import signupForm from './reducers/signupForm'
 import myProperties from './reducers/myProperties'
 import propertyForm from './reducers/propertyForm'
 
+
 const reducer = combineReducers({
     users,
     currentUser, 

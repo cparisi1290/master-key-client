@@ -53,3 +53,11 @@ div.desc {
   cursor: pointer;
   padding-bottom: 0.3em
 }
+
+.blue {
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
